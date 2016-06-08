@@ -359,9 +359,9 @@ typedef struct JsonHttpResponse {
             self.currentUUID = uuid;
 
             NSLog(@"Redirecting to: %@", components.URL.absoluteString);
-            
+
             SEL wkWebViewSelector = NSSelectorFromString(@"loadFileURL:allowingReadAccessToURL:");
-            
+
             if ([self.webView respondsToSelector:wkWebViewSelector]) {
                 NSURL *readAccessUrl = [components.URL URLByDeletingLastPathComponent];
                 ((id (*)(id, SEL, id, id))objc_msgSend)(self.webView, wkWebViewSelector, components.URL, readAccessUrl);
@@ -466,7 +466,7 @@ typedef struct JsonHttpResponse {
         NSArray *version_parts = [version componentsSeparatedByString:@"|"];
         NSString *version_uuid = version_parts[1];
         if (![version_uuid isEqualToString:uuid]) {
-            [newVersions addObject:version_uuid];
+            [newVersions addObject:version];
         }
     }
 
